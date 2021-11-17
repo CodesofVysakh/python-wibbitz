@@ -74,63 +74,27 @@
             </section>
         </section>
         <section id="fearures">
+            {% for feature in features %}
             <section class="feature">
                 <section class="wrapper flex-wrapper">
                     <div class="img_container">
-                        <img src="{% static 'images/HS.png' %}" alt="" />
+                        <img src="{{feature.image.url}}" alt="" />
                     </div>
                     <div class="content">
-                        <div class="icon"><img src="{% static 'images/edit-white.svg' %}" alt="" /></div>
-                        <h3>Match everything to your brand and style</h3>
-                        <p>Add logo watermarks, custom video intros, text overlay styles, a full-spectrum color palette, and upload your brand fonts.</p>
+                        <div class="icon" style="background: {{feature.icon_background}};"><img src="{{feature.icon.url}}" alt="" /></div>
+                        <h3>{{feature.title}}</h3>
+                        <p>{{feature.description}}</p>
                         <a href="#" class="button">Get a Demo</a>
                         <div class="review">
                             <hr class="dash" />
-                            <blockquote>"Being able to crank out videos consistently, localize them for different regions, and still save resources, time, and energy has been a game changer."</blockquote>
-                            <span><small>Charlie Reiff,</small> Social Video Editor & Animator</span>
-                            <img src="{% static 'images/logo-hubspot.svg' %}" alt="" />
+                            <blockquote>{{feature.testimonial_description}}</blockquote>
+                            <span><small>{{feature.testimonial_author}},</small> {{feature.author_designation}}</span>
+                            <img src="{{feature.testimonial_logo.url}}" alt="" />
                         </div>
                     </div>
                 </section>
             </section>
-            <section class="feature">
-                <section class="wrapper flex-wrapper">
-                    <div class="img_container">
-                        <img src="{% static 'images/HS.png' %}" alt="" />
-                    </div>
-                    <div class="content">
-                        <div class="icon" style="background:#ffc837;"><img src="{% static 'images/lightning-white.svg' %}" alt="" /></div>
-                        <h3>Match everything to your brand and style</h3>
-                        <p>Add logo watermarks, custom video intros, text overlay styles, a full-spectrum color palette, and upload your brand fonts.</p>
-                        <a href="#" class="button">Get a Demo</a>
-                        <div class="review">
-                            <hr class="dash" />
-                            <blockquote>"Being able to crank out videos consistently, localize them for different regions, and still save resources, time, and energy has been a game changer."</blockquote>
-                            <span><small>Charlie Reiff,</small> Social Video Editor & Animator</span>
-                            <img src="{% static 'images/USA-Today-logo_24.svg' %}" alt="" />
-                        </div>
-                    </div>
-                </section>
-            </section>
-            <section class="feature">
-                <section class="wrapper flex-wrapper">
-                    <div class="img_container">
-                        <img src="{% static 'images/HS.png' %}" alt="" />
-                    </div>
-                    <div class="content">
-                        <div class="icon" style="background:#3cd278;"><img src="{% static 'images/film-white.svg' %}" alt="" /></div>
-                        <h3>Speed up video production time</h3>
-                        <p>React to breaking news and trending topics on every platform with one-click resizing to landscape, square, and vertical format.</p>
-                        <a href="#" class="button">Get a Demo</a>
-                        <div class="review">
-                            <hr class="dash" />
-                            <blockquote>"Wibbitz allows us to quickly create templates to share similar videos across multiple sites. A team of three people created videos analyzing several hundred NFL draft picks in just a few hours."</blockquote>
-                            <span><small>Chris Pirrone,</small> General Manager, Sports Media Group</span>
-                            <img src="{% static 'images/IHMe55.svg' %}" alt="" />
-                        </div>
-                    </div>
-                </section>
-            </section>
+            {% endfor %}
         </section>
         <section id="reviews">
             <section class="wrapper">
@@ -223,7 +187,17 @@
                 </section>
                 <section class="content">
                     <ul>
-                        <li>
+                        {% for marketingfeature in marketingfeatures %}
+                            <li>
+                                <div class="content">
+                                    <a href="#" class="img_container"><img src="{{marketingfeature.image.url}}" alt="" /></a>
+                                    <h3><a href="#">{{marketingfeature.title}}</a></h3>
+                                    <p>{{marketingfeature.description}}</p>
+                                    <a href="#" class="button">Learn More</a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                        <!-- <li>
                             <div class="content">
                                 <a href="#" class="img_container"><img src="{% static 'images/usecase-illustration-marketing.svg' %}" alt="" /></a>
                                 <h3><a href="#">Marketing</a></h3>
@@ -262,15 +236,15 @@
                                 <p>Promote your blog posts, case studies, and product announcements with branded videos.</p>
                                 <a href="#" class="button">Learn More</a>
                             </div>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <div class="content">
                                 <a href="#" class="img_container"><img src="{% static 'images/usecase-illustration-marketing.svg' %}" alt="" /></a>
                                 <h3><a href="#">Marketing</a></h3>
                                 <p>Promote your blog posts, case studies, and product announcements with branded videos.</p>
                                 <a href="#" class="button">Learn More</a>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </section>
                 <section class="bottom">
@@ -328,24 +302,14 @@
                     <h3>Video resources: Insider advice on how to bring your content to life</h3>
                 </section>
                 <ul>
-                    <li>
-                        <img src="{% static 'images/Blog-video-attention-span-2.jpg' %}" alt="" />
-                        <span style="color:#0055fb" class="label">Blog Post</span>
-                        <h2>6 best video practices for capturing audiences’ 8-second attention span</h2>
-                        <a href="#" class="button">Read blog</a>
-                    </li>
-                    <li>
-                        <img src="{% static 'images/Webinar-Ceros-Thumbnail.jpg' %}" alt="" />
-                        <span class="label">Webinar</span>
-                        <h2>Wibbitz + Ceros: Improving content marketing through visual storytelling</h2>
-                        <a href="#" class="button">Watch webina</a>
-                    </li>
-                    <li>
-                        <img src="{% static 'images/2019-Q3-Instagram-Report-EN-Thumbnail.png' %}" alt="" />
-                        <span class="label">Report</span>
-                        <h2>Explore Instagram Video: How to convert, engage, and get more Instagram followers with video</h2>
-                        <a href="#" class="button">Get the report</a>
-                    </li>
+                    {% for blog in blogs %}
+                        <li>
+                            <img src="{{blog.image.url}}" alt="" />
+                            <span style="color:#0055fb" class="label">{{blog.content_type}}</span>
+                            <h2>{{blog.title}}</h2>
+                            <a href="#" class="button">{{blog.title_redirection}}</a>
+                        </li>
+                    {% endfor%}
                 </ul>
                 <div class="bottom">
                     <a href="#" class="button">Explore All Resources</a>
