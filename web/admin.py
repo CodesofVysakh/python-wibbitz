@@ -1,5 +1,5 @@
 from django.contrib import admin
-from web.models import Customer, Subscriber, Feature, Blog, VideoBlog, Testimonial, MarketingFeature, Product
+from web.models import Customer, Subscriber, Feature, Blog, VideoBlog, Testimonial, MarketingFeature, Product, Contact
 
 
 admin.site.register(Customer)
@@ -12,8 +12,14 @@ admin.site.register(Feature, FeatureAdmin)
 
 admin.site.register(Blog)
 admin.site.register(VideoBlog)
-admin.site.register(Testimonial)
+
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ["id","name","is_featured"]
+
+admin.site.register(Testimonial, TestimonialAdmin)
 admin.site.register(MarketingFeature)
 admin.site.register(Product)
+admin.site.register(Contact)
+
 
 

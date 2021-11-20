@@ -1,11 +1,34 @@
 from django.db import models
 
 
-BLOG_TYPE = [
+BLOG_TYPE = (
     ("blog_post", "Blog Post"),
     ("webinar", "Webinar"),
     ("report", "Report"),
-]
+)
+
+COMPANY_SIZE = (
+    ("1", "1-10"),
+    ("2", "11-50"),
+    ("3", "51-200"),
+    ("4", "201-500"),
+)
+
+INDUSTRY = (
+    ("1", "Agriculture"),
+    ("2", "Banking & Finance"),
+    ("3", "Business Services & Softwares"),
+)
+
+JOB_ROLE = (
+    ("1", "C-Suite"),
+    ("2", "VIP"),
+)
+
+COUNTRY = (
+    ("us", "United States"),
+    ("al", "Albania"),
+)
 
 class Customer(models.Model):
     image = models.FileField(upload_to="Customer/")
@@ -19,6 +42,7 @@ class Subscriber(models.Model):
 
     def __str__(self):
         return self.email
+
 
 class Feature(models.Model):
     image = models.ImageField(upload_to="Feature/images")
@@ -38,6 +62,7 @@ class Feature(models.Model):
     def __str__(self):
         return self.title
 
+
 class VideoBlog(models.Model):
     image = models.ImageField(upload_to="VideoBlog/images")
     title = models.CharField(max_length=255)
@@ -46,14 +71,19 @@ class VideoBlog(models.Model):
     def __str__(self):
         return self.title
 
+
 class Testimonial(models.Model):
     image = models.ImageField(upload_to="Testimonial/images")
-    logo = models.FileField(upload_to="Testimonial/logos")
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    designation = models.CharField(max_length=255)
-    company_name = models.CharField(max_length=255)
-    is_featured = models.BooleanField(null=True)
+    logo = models.FileField(upload_to="Testimonial/logos", null=True)
+    name = models.CharField(max_length=255,null=True)
+    description = models.TextField(null=True)
+    designation = models.CharField(max_length=255,null=True)
+    company_name = models.CharField(max_length=255,null=True)
+    is_featured = models.BooleanField()
+
+    class Meta:
+        db_table = "web_testimonial"
+        ordering = ["id"]
 
     def __str__(self):
         return self.name
@@ -67,6 +97,7 @@ class MarketingFeature(models.Model):
     def __str__(self):
         return self.title
 
+
 class Product(models.Model):
     image = models.ImageField(upload_to="Product/images")
     title = models.CharField(max_length=255)
@@ -76,6 +107,7 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+
 class Blog(models.Model):
     image = models.ImageField(upload_to="Blog/images")
     title = models.CharField(max_length=255)
@@ -84,3 +116,25 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Contact(models.Model):
+    email = models.EmailField()
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    company = models.CharField(max_length=255)
+    company_size = models.CharField(max_length=255, choices=COMPANY_SIZE)
+    industry = models.CharField(max_length=255, choices=INDUSTRY)
+    job_role = models.CharField(max_length=255, choices=JOB_ROLE)
+    country = models.CharField(max_length=255, choices=COUNTRY)
+    user_agreement = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = "web_contact"
+        ordering = ["-id"]
+
+    def __str__(self):
+        return self.first_name
+
+
+    

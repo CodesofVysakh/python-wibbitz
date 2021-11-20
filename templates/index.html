@@ -103,39 +103,19 @@
                 </section>
                 <section class="bottom">
                     <ul>
-                        <li>
-                            <div class="top">
-                                <span class="play">
-                                    <img src="{% static 'images/play.svg' %}" alt="" />
-                                </span>
-                                <div class="logo">
-                                    <img src="{% static 'images/logo-brand-nbc2.svg' %}" alt="" />
+                        {% for videoblog in videoblogs %}
+                            <li>
+                                <div class="top" style="background-image: url({{videoblog.image.url}});">
+                                    <span class="play">
+                                        <img src="{% static 'images/play.svg' %}" alt="" />
+                                    </span>
+                                    <div class="logo">
+                                        <img src="{{videoblog.logo.url}}" alt="" />
+                                    </div>
                                 </div>
-                            </div>
-                            <h4>How NBC enhances their content offering with custom video automation</h4>
-                        </li>
-                        <li>
-                            <div class="top">
-                                <span class="play">
-                                    <img src="{% static 'images/play.svg' %}" alt="" />
-                                </span>
-                                <div class="logo">
-                                    <img src="{% static 'images/hubspot-1.svg' %}" alt="" />
-                                </div>
-                            </div>
-                            <h4>How HubSpot showcases business trends through video</h4>
-                        </li>
-                        <li>
-                            <div class="top">
-                                <span class="play">
-                                    <img src="{% static 'images/play.svg' %}" alt="" />
-                                </span>
-                                <div class="logo">
-                                    <img src="{% static 'images/HousingWi.svg' %}" alt="" />
-                                </div>
-                            </div>
-                            <h4>How HousingWire uses Wibbitz to highlight housing market and real estate news</h4>
-                        </li>
+                                <h4>{{videoblog.title}}</h4>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </section>
             </section>
@@ -143,38 +123,24 @@
         <section id="testimonials">
             <section class="wrapper">
                 <ul>
-                    <li>
-                        <div class="top">
-                            <img src="{% static 'images/Chase-Kroll-920x760normal-1.png' %}" alt="" class="cover" />
-                            <div class="logo">
-                                <img src="{% static 'images/Hogan_Lovells_logo_white_bg2.svg' %}" alt="" />
+                    {% for featured_testimonial in featured_testimonials %}
+                        <li>
+                            <div class="top">
+                                <img src="{{featured_testimonial.image.url}}" alt="" class="cover" />
+                                <div class="logo">
+                                    <img src="{{featured_testimonial.logo.url}}" alt="" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="bottom">
-                            <blockquote>
-                                The versatility of Wibbitz allows us to create video for any kind of digital content—making our team more efficient while scaling production.
-                            </blockquote>
-                            <h6>Chase Kroll</h6>
-                            <span>Managing Director</span>
-                            <small>Strategic Communications</small>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="top">
-                            <img src="{% static 'images/Ken-Gibs-920x760normal-1.png' %}" alt="" class="cover" />
-                            <div class="logo">
-                                <img src="{% static 'images/BET_logo_black.svg' %}" alt="" />
+                            <div class="bottom">
+                                <blockquote>
+                                    {{featured_testimonial.description}}
+                                </blockquote>
+                                <h6>{{featured_testimonial.name}}</h6>
+                                <span>{{featured_testimonial.designation}}</span>
+                                <small>{{featured_testimonial.company_name}}</small>
                             </div>
-                        </div>
-                        <div class="bottom">
-                            <blockquote>
-                                The videos we can quickly create with Wibbitz help us engage our audiences on social media, who feel more connected to videos than just an image or text post.
-                            </blockquote>
-                            <h6>Ken Gibbs</h6>
-                            <span>Vice President</span>
-                            <small>Digital Video & Social Content</small>
-                        </div>
-                    </li>
+                        </li>
+                    {% endfor %}
                 </ul>
             </section>
         </section>
@@ -197,54 +163,6 @@
                                 </div>
                             </li>
                         {% endfor %}
-                        <!-- <li>
-                            <div class="content">
-                                <a href="#" class="img_container"><img src="{% static 'images/usecase-illustration-marketing.svg' %}" alt="" /></a>
-                                <h3><a href="#">Marketing</a></h3>
-                                <p>Promote your blog posts, case studies, and product announcements with branded videos.</p>
-                                <a href="#" class="button">Learn More</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="content">
-                                <a href="#" class="img_container"><img src="{% static 'images/usecase-illustration-marketing.svg' %}" alt="" /></a>
-                                <h3><a href="#">Marketing</a></h3>
-                                <p>Promote your blog posts, case studies, and product announcements with branded videos.</p>
-                                <a href="#" class="button">Learn More</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="content">
-                                <a href="#" class="img_container"><img src="{% static 'images/usecase-illustration-marketing.svg' %}" alt="" /></a>
-                                <h3><a href="#">Marketing</a></h3>
-                                <p>Promote your blog posts, case studies, and product announcements with branded videos.</p>
-                                <a href="#" class="button">Learn More</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="content">
-                                <a href="#" class="img_container"><img src="{% static 'images/usecase-illustration-marketing.svg' %}" alt="" /></a>
-                                <h3><a href="#">Marketing</a></h3>
-                                <p>Promote your blog posts, case studies, and product announcements with branded videos.</p>
-                                <a href="#" class="button">Learn More</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="content">
-                                <a href="#" class="img_container"><img src="{% static 'images/usecase-illustration-marketing.svg' %}" alt="" /></a>
-                                <h3><a href="#">Marketing</a></h3>
-                                <p>Promote your blog posts, case studies, and product announcements with branded videos.</p>
-                                <a href="#" class="button">Learn More</a>
-                            </div>
-                        </li> -->
-                        <!-- <li>
-                            <div class="content">
-                                <a href="#" class="img_container"><img src="{% static 'images/usecase-illustration-marketing.svg' %}" alt="" /></a>
-                                <h3><a href="#">Marketing</a></h3>
-                                <p>Promote your blog posts, case studies, and product announcements with branded videos.</p>
-                                <a href="#" class="button">Learn More</a>
-                            </div>
-                        </li> -->
                     </ul>
                 </section>
                 <section class="bottom">
@@ -262,37 +180,19 @@
                     <h3>Our three video solutions are built for every type of business</h3>
                 </section>
                 <ul>
-                    <li class="one">
-                        <div class="logo">
-                            <img src="{% static 'images/Studio-icon2.svg' %}" alt="" />
-                        </div>
-                        <h1>Studio</h1>
-                        <p>Create professional short form video with the online video editor that anyone can master.</p>
-                        <a href="#" class="button">Learn More</a>
-                        <div class="img_bottom">
-                            <img src="{% static 'images/studio-card.png' %}" alt="" class="hero" />
-                        </div>
-                    </li>
-                    <li class="two">
-                        <div class="logo">
-                            <img src="{% static 'images/Lightbox-icon2.svg' %}" alt="" />
-                        </div>
-                        <h1>Lightbox</h1>
-                        <p>Engage your website or app users with a built-in custom video creation interface.</p>
-                        <a href="#" class="button">Learn More</a>
-                        <div class="img_bottom">
-                        <img src="{% static 'images/lightbox-card.png' %}" alt="" class="hero" /></div>
-                    </li>
-                    <li class="three">
-                        <div class="logo">
-                            <img src="{% static 'images/Wavi-icon2.svg' %}" alt="" />
-                        </div>
-                        <h1>Wavi</h1>
-                        <p>Scale video by automatically producing from text content or data with our API.</p>
-                        <a href="#" class="button">Learn More</a>
-                        <div class="img_bottom">
-                        <img src="{% static 'images/wavi-card.png' %}" alt="" class="hero" /></div>
-                    </li>
+                    {% for product in products %}
+                        <li class="{% cycle 'one' 'two' 'three' %}">
+                            <div class="logo">
+                                <img src="{{product.logo.url}}" alt="" />
+                            </div>
+                            <h1>{{product.title}}</h1>
+                            <p>{{product.description}}</p>
+                            <a href="#" class="button">Learn More</a>
+                            <div class="img_bottom">
+                                <img src="{{product.image.url}}" alt="" class="hero" />
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </section>
         </section>
@@ -305,7 +205,7 @@
                     {% for blog in blogs %}
                         <li>
                             <img src="{{blog.image.url}}" alt="" />
-                            <span style="color:#0055fb" class="label">{{blog.content_type}}</span>
+                            <span style="color:#0055fb" class="label">{{blog.get_content_type_display}}</span>
                             <h2>{{blog.title}}</h2>
                             <a href="#" class="button">{{blog.title_redirection}}</a>
                         </li>
