@@ -32,6 +32,7 @@ COUNTRY = (
 
 class Customer(models.Model):
     image = models.FileField(upload_to="Customer/")
+    white_logo = models.FileField(upload_to="Customer/", blank=True, null=True)
 
     def __str__(self):
         return str(self.id)
