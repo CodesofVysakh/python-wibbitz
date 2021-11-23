@@ -1,6 +1,6 @@
 import json
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http.response import HttpResponse
 
 from web.models import Customer, Subscriber, Feature, Blog, MarketingFeature, Product, Testimonial, VideoBlog, Contact
@@ -33,6 +33,7 @@ def index(request):
         "latest_customers" : latest_customers,
     }
     return render(request,"index.html", context=context)
+
 
 def create_subscriber(request):
     email = request.POST.get("email")
@@ -108,3 +109,14 @@ def contact(request):
             "message" : "You are already a member. No need to register again."
         }
     return HttpResponse(json.dumps(response_data), content_type="application/javascript")
+
+
+def product(request, pk):
+    product = get_object_or_404(Product.objects.filter(pk=pk))
+    customers = Customer.objects.filter(product=product)
+    context = {
+        "product" : product,
+        "customers" : customers
+    }
+
+    return render(request,"product.html", context=context)

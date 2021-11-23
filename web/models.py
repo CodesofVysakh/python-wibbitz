@@ -31,6 +31,7 @@ COUNTRY = (
 )
 
 class Customer(models.Model):
+    product = models.ForeignKey("web.Product", on_delete=models.CASCADE)
     image = models.FileField(upload_to="Customer/")
     white_logo = models.FileField(upload_to="Customer/", blank=True, null=True)
 
@@ -101,12 +102,15 @@ class MarketingFeature(models.Model):
 
 class Product(models.Model):
     image = models.ImageField(upload_to="Product/images")
+    hero_image = models.FileField(upload_to="Product/hero-images")
     title = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    background_color = models.CharField(max_length=255)
     description = models.TextField()
     logo = models.FileField(upload_to="Product/logos")
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class Blog(models.Model):
